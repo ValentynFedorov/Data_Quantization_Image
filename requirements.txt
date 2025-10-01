@@ -1,0 +1,16 @@
+numpy
+pandas
+scikit-learn
+scipy
+matplotlib
+torch>=2.0
+torchvision
+timm
+catboost
+xgboost
+joblib
+faiss-cpu
+tqdm
+seaborn
+pot
+bert-score
