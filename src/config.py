@@ -16,7 +16,7 @@ CSV_FILE = os.path.join(ORIG_DIR, "student_dropout.csv")
 
 # image parameters
 IMG_SIZE = 32       # default image size (k x k)
-QUANT_LEVELS = 256  # number of quantization levels, e.g., 16,64,256
+QUANT_LEVELS = 64  # number of quantization levels, e.g., 16,64,256
 PAD_TO = IMG_SIZE*IMG_SIZE  # pad features to fill image
 
 # training parameters

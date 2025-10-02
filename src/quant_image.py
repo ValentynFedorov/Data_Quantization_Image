@@ -21,8 +21,7 @@ def build_and_save_images(csv_path=CSV_FILE, out_dir=IMG_DIR, img_size=IMG_SIZE,
         y = df.iloc[:, -1]
         X = df.iloc[:, :-1]
 
-    # ---- 🔧 Бінаризація таргету ----
-    # приклад: Dropout = 1, решта = 0
+
     y = y.astype(str).str.strip()  # на всяк випадок прибираємо пробіли
     y_bin = y.apply(lambda v: 1 if v.lower() == "dropout" else 0).values
 
