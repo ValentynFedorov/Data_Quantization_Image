@@ -11,7 +11,7 @@ import pandas as pd
 import numpy as np
 from tqdm import tqdm
 import torch.optim as optim
-from sklearn.metrics import accuracy_score, f1_score
+from sklearn.metrics import accuracy_score, f1_score, roc_auc_score
 from quant_image import build_and_save_images
 
 
@@ -65,8 +65,9 @@ def train_loop(model, dl_train, dl_val, device=DEVICE, epochs=EPOCHS, lr=LEARNIN
                 gts.extend(y.numpy().tolist())
         acc = accuracy_score(gts, preds)
         f1 = f1_score(gts, preds)
-        print(f"Epoch {epoch+1}: val_acc={acc:.4f}, val_f1={f1:.4f}")
-        history.append({'epoch':epoch+1, 'acc':acc, 'f1':f1})
+        roc_auc =  roc_auc_score(gts, preds)
+        print(f"Epoch {epoch+1}: val_acc={acc:.4f}, val_f1={f1:.4f}, val_roc_auc={roc_auc:.4f}" )
+        history.append({'epoch':epoch+1, 'acc':acc, 'f1':f1, 'roc_auc':roc_auc})
         if acc > best_val:
             best_val = acc
             if save_path:
@@ -113,7 +114,8 @@ if __name__=="__main__":
                     "quant_levels": q,
                     "img_size": img_size,
                     "best_acc": best_epoch['acc'],
-                    "best_f1": best_epoch['f1']
+                    "best_f1": best_epoch['f1'],
+                    "best_roc_auc": best_epoch['roc_auc'],
                 })
 
     df = pd.DataFrame(results)
