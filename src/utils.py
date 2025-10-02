@@ -11,14 +11,12 @@ def load_tabular(csv_path):
     return df
 
 def normalize_and_quantize(X, n_levels=QUANT_LEVELS):
-    # X: numpy array (n_samples, n_features)
     scaler = MinMaxScaler()
     Xs = scaler.fit_transform(X.astype(float))
     Xq = (Xs * (n_levels - 1)).round().astype(int)
     return Xq, scaler
 
 def pad_row_to_length(row, length=PAD_TO, pad_value=0):
-    # row: 1D array
     if len(row) >= length:
         return row[:length]
     else:

@@ -14,9 +14,7 @@ import torch.optim as optim
 from sklearn.metrics import accuracy_score, f1_score
 from quant_image import build_and_save_images
 
-# ----------------------------
-# Data split
-# ----------------------------
+
 def train_val_split_meta(meta_csv, test_size=0.2, random_state=42):
     meta = pd.read_csv(meta_csv)
     train, val = train_test_split(meta, test_size=test_size, stratify=meta['label'], random_state=random_state)
@@ -56,7 +54,6 @@ def train_loop(model, dl_train, dl_val, device=DEVICE, epochs=EPOCHS, lr=LEARNIN
             logits = model(x)
             loss = criterion(logits, y)
             optimizer.zero_grad(); loss.backward(); optimizer.step()
-        # val
         model.eval()
         preds, gts = [], []
         with torch.no_grad():
@@ -119,7 +116,6 @@ if __name__=="__main__":
                     "best_f1": best_epoch['f1']
                 })
 
-    # збереження результатів
     df = pd.DataFrame(results)
     df.to_csv(os.path.join(OUT_DIR, "cnn_experiments.csv"), index=False)
     print("\n=== Finished. Results saved to outputs/cnn_experiments.csv ===")

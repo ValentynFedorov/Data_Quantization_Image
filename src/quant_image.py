@@ -7,28 +7,22 @@ from utils import normalize_and_quantize, row_to_image, save_image
 from tqdm import tqdm
 
 
-# src/quant_image.py (оновлений фрагмент)
 def build_and_save_images(csv_path=CSV_FILE, out_dir=IMG_DIR, img_size=IMG_SIZE, n_levels=QUANT_LEVELS):
-    # читаємо з роздільником ';'
     df = pd.read_csv(csv_path, sep=";")
 
-    # якщо є колонка target
     if 'target' in df.columns:
         y = df['target']
         X = df.drop(columns=['target'])
     else:
-        # якщо цільова ознака остання
         y = df.iloc[:, -1]
         X = df.iloc[:, :-1]
 
 
-    y = y.astype(str).str.strip()  # на всяк випадок прибираємо пробіли
+    y = y.astype(str).str.strip()
     y_bin = y.apply(lambda v: 1 if v.lower() == "dropout" else 0).values
 
-    # залишаємо лише числові ознаки
     X = X.apply(pd.to_numeric, errors='coerce').fillna(0).values
 
-    # квантизуємо
     Xq, scaler = normalize_and_quantize(X, n_levels)
 
     os.makedirs(out_dir, exist_ok=True)
