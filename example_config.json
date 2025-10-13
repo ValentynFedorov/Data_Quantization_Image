@@ -1,0 +1,52 @@
+{
+  "encoding_methods": ["simple", "correlation", "tsne", "gaf_sum"],
+  "img_sizes": [32, 64],
+  "quant_levels": [64, 256],
+  "cnn_configs": [
+    {
+      "model": "resnet18",
+      "pretrained": false,
+      "freeze": false,
+      "augmentation": false
+    },
+    {
+      "model": "resnet18",
+      "pretrained": true,
+      "freeze": false,
+      "augmentation": false
+    },
+    {
+      "model": "resnet18",
+      "pretrained": true,
+      "freeze": true,
+      "augmentation": false
+    },
+    {
+      "model": "resnet18",
+      "pretrained": false,
+      "freeze": false,
+      "augmentation": true
+    },
+    {
+      "model": "mobilenet_v2",
+      "pretrained": false,
+      "freeze": false,
+      "augmentation": false
+    },
+    {
+      "model": "mobilenet_v2",
+      "pretrained": true,
+      "freeze": false,
+      "augmentation": false
+    },
+    {
+      "model": "efficientnet_b0",
+      "pretrained": false,
+      "freeze": false,
+      "augmentation": false
+    }
+  ],
+  "epochs": 30,
+  "run_explainability": true,
+  "run_autoencoder": true
+}

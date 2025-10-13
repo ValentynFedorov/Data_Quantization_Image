@@ -12,10 +12,9 @@ OUT_DIR = os.path.join(ROOT, "outputs")
 os.makedirs(IMG_DIR, exist_ok=True)
 os.makedirs(OUT_DIR, exist_ok=True)
 
-# dataset file name (put your csv here)
 CSV_FILE = os.path.join(ORIG_DIR, "student_dropout.csv")
 
-# image parameters
+
 IMG_SIZE = 32       # default image size (k x k)
 QUANT_LEVELS = 64  # number of quantization levels, e.g., 16,64,256
 PAD_TO = IMG_SIZE*IMG_SIZE  # pad features to fill image

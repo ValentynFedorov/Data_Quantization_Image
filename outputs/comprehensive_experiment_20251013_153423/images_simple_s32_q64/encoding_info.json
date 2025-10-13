@@ -1,0 +1,7 @@
+{
+  "encoding_method": "simple",
+  "img_size": 32,
+  "n_levels": 64,
+  "n_samples": 4424,
+  "n_features": 36
+}

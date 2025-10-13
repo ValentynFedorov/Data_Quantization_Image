@@ -1,0 +1,42 @@
+[
+  {
+    "model": "CatBoost",
+    "accuracy": 0.7661016949152543,
+    "f1_macro": 0.7025564174905843,
+    "f1_weighted": 0.7613035896219688,
+    "roc_auc": null,
+    "training_time": 0.4958810806274414,
+    "inference_time": 0.0021626949310302734,
+    "n_params": "N/A"
+  },
+  {
+    "model": "XGBoost",
+    "accuracy": 0.7672316384180791,
+    "f1_macro": 0.7035717800935193,
+    "f1_weighted": 0.7621747456559542,
+    "roc_auc": null,
+    "training_time": 0.45630908012390137,
+    "inference_time": 0.006256103515625,
+    "n_params": 100
+  },
+  {
+    "model": "LightGBM",
+    "accuracy": 0.7661016949152543,
+    "f1_macro": 0.7038844906491986,
+    "f1_weighted": 0.7602764097284094,
+    "roc_auc": null,
+    "training_time": 0.2455747127532959,
+    "inference_time": 0.004660367965698242,
+    "n_params": 100
+  },
+  {
+    "model": "Logistic_Regression",
+    "accuracy": 0.768361581920904,
+    "f1_macro": 0.682601247658837,
+    "f1_weighted": 0.7531276658422533,
+    "roc_auc": null,
+    "training_time": 0.2525899410247803,
+    "inference_time": 0.0004923343658447266,
+    "n_params": "N/A"
+  }
+]
